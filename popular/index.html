@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/pizzalogo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pizza Edition Popular</title>
+    <link id="favicon" rel="icon" href="/jsload/favicon.js" type="image/x-icon">
+    <script src="/jsload/favicon.js"></script>
+    <script src="/jsload/panickey.js"></script>
+    <script src="/jsload/confirmation.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="canonical" href="https://pizzaedition.win/popular/" />
+    <!-- Google tag (gtag.js) -->
+    <script src="/analytics.js"></script>
+
+</script>
+
+
+
+</body>
+
+
+
+    <body>
+
+
+  <div class="navbar">
+      <div class="navbar-left">
+          <a href="/index.html">
+              <img src="/images/pizzalogo.png" alt="Site Logo" width="30" height="30">
+          </a>
+          <a href="/index.html">The Pizza Edition</a>
+      </div>
+      <div class="navbar-right">
+          <a href="/popular">
+              <img src="/images/whitefire.png" alt="Game Icon" style="width: 1.25vw; height: auto;">
+              Popular
+          </a>
+          <a href="/g">
+              <img src="/images/whitegame.png" alt="Game Icon" style="width: 1.302vw; height: auto;">
+              Games
+          </a>
+          <a href="/apps">
+              <img src="/images/whitenblocks.png" alt="App Icon" style="width: 1.302vw; height: auto;">
+              Apps
+          </a>
+          <a href="/extra">
+              <img src="/images/whitesearchs.png" alt="Search Icon" style="width: 1.302vw; height: auto;">
+              Extras
+          </a>
+          <a href="/settings" class="navbar-img-link">
+              <img src="/images/icons8-settings-288.png" alt="Settings Icon" style="width: 1.502vw; height: auto;">
+          </a>
+      </div>
+  </div>
+
+
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"956586e15fb39e05","version":"2025.6.2","r":1,"token":"3af592e2f72249a2939700dadf653634","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</head>
+    <body>
+    
+
+
+
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search for a popular game...">
+            <div id="loading-message" class="highlight">Loading 0/0</div> 
+        </div>
+        
+        <div id="search-results"></div>
+        
+
+
+
+    <script>
+        
+const games = [
+{ name: "OvO Dementions", image: "/images/games/ovodimensions-min.jpg", url: "/g/ovodimensions/"},
+{ name: "Polyrack", image: "/images/games/polytrack-min.jpg", url: "/g/polytrack/"},
+{ name: "Retro Bowl College", image: "/images/games/rbcollege-min.jpg", url: "/g/retrobowlcollege"},
+{ name: "Cluster Rush", image: "/images/games/cluster-min.png", url: "/g/clusterrush"},
+{ name: "Gladihoppers", image: "/images/games/gladihoppers-min.jpg", url: "/g/gladihoppers"},
+{ name: "BitLife", image: "/images/games/bitlife-min.jpg", url: "/g/bitlife"},
+{ name: "Snow Rider 3D", image: "/images/games/snowrider3d-min.png", url: "/g/snowrider3d"},
+{ name: "Deadly Decent", image: "/images/games/deadlydecent-min.png", url: "/g/deadlydecent"},
+{ name: "1v1.LOL", image: "/images/games/1v1lol-min.png", url: "/g/1v1lol"},
+{ name: "Idle Ants", image: "/images/games/idleants-min.jpg", url: "/g/idleants"},
+{ name: "Gunspin", image: "/images/games/gunspin-min.png", url: "/g/gunspin"},
+{ name: "Block Blast", image: "/images/games/blockblast-min.jpg", url: "/g/blockblast"},
+{ name: "Drive Mad", image: "/images/games/drivemad-min.png", url: "/g/drivemad"},
+{ name: "Geometry Dash", image: "/images/games/geometrydash-min.png", url: "/g/geometrydash"},
+{ name: "Race Survival", image: "/images/games/racesurvival.jpg", url: "/g/racesurvival"},
+{ name: "Cookie Clicker", image: "/images/games/cookieclicker-min.png", url: "/g/cookieclicker"},
+{ name: "Slope", image: "/images/games/slope-min.jpg", url: "/g/slope"},
+{ name: "Subway Surfers", image: "/images/games/subwaysurferssaint-min.png", url: "/g/subwaysurferssp"},
+{ name: "Steel Hills", image: "/images/games/hillsofsteel-min.jpg", url: "/g/steelhills"},
+{ name: "Unicycle Heros", image: "/images/games/unicycleheroes-min.png", url: "/g/unicyclehero"},
+{ name: "Ragdoll Archers", image: "/images/games/ragdollarchers-min.png", url: "/g/ragdollarchers"},
+{ name: "Basketball Stars", image: "/images/games/basketballstars-min.jpeg", url: "/g/basketballstars"},
+{ name: "Spiral Roll", image: "/images/games/spiralroll-min.jpg", url: "/g/spiralroll"},
+{ name: "Blumgi Paintball", image: "/images/games/blumgipaintball-min.png", url: "/g/blumgipaintball"},
+{ name: "Zombie Derby", image: "/images/games/zombiederbypixelsurvival-min.png", url: "/g/zombiederbypixelsurvival"},
+{ name: "Monkey Mart", image: "/images/games/monkeymart-min.png", url: "/g/monkeymart"},
+{ name: "Basket Random", image: "/images/games/basketrandom-min.png", url: "/g/basketrandom"},
+{ name: "Stickman Bike", image: "/images/games/stickmanbike-min.jpg", url: "/g/stickmanbike"},
+{ name: "Cappybara clicker", image: "/images/games/capybaraclicker-min.png", url: "/g/cappybaraclicker"},
+{ name: "Tomb Of The Mask", image: "/images/games/tomb-min.png", url: "/g/tombofthemask"},
+{ name: "Adventure Capitalist", image: "/images/games/adventurecapitalist-min.jpg", url: "/g/adventurecapitalist"},
+{ name: "DUNE!", image: "/images/games/dune-min.jpg", url: "/g/dune"},
+{ name: "Drift Boss", image: "/images/games/driftboss-min.png", url: "/g/driftboss"},
+{ name: "Bike Obby", image: "/images/games/bikeobby-min.jpg", url: "/g/bikeobby"},
+{ name: "Going Balls", image: "/images/games/goingballs-min.png", url: "/g/goingballs"},
+{ name: "Dreadhead Parkour", image: "/images/games/dreadhead-min.png", url: "/g/dreadheadparkour"},
+{ name: "Stack Bounce", image: "/images/games/stackbounce-min.png", url: "/g/stackbounce"},
+{ name: "Ping Pong Go", image: "/images/games/pingponggo-min.png", url: "/g/pingponggo"},
+{ name: "Jump Only", image: "/images/games/jumponly-min.jpg", url: "/g/jumponly"},
+{ name: "Super Liquid Soccer", image: "/images/games/superliquidsoccer-min.jpg", url: "/g/superliquidsoccer"},
+{ name: "Roper", image: "/images/games/roper-min.jpg", url: "/g/roper"},
+{ name: "Blumgi Racers", image: "/images/games/blumgiracers-min.jpg", url: "/g/blumgiracers"},
+{ name: "A Small World Cup", image: "/images/games/asmallworldcup-min.jpg", url: "/g/asmallworldcup"},
+{ name: "Paper.IO 2", image: "/images/games/paperio2.png", url: "/g/paperio2"},
+{ name: "Tabletennis", image: "/images/games/tabletennis-min.png", url: "/g/tabletennisworldtour"},
+{ name: "Tiny Fishing", image: "/images/games/tinyfish-min.png", url: "/g/tinyfishing"},
+{ name: "Turbo Moto Racer", image: "/images/games/turbomotoracer-min.jpg", url: "/g/turbomotoracer"},
+{ name: "Tunnel Rush 2", image: "/images/games/tunnelrush2-min.png", url: "/g/tunnelrush2"},
+{ name: "Drift Hunters", image: "/images/games/drifhunters-min.jpg", url: "/g/drifthunters"},
+{ name: "Level Devil", image: "/images/games/leveldevil-min.jpg", url: "/g/leveldevil"},
+{ name: "Madalin Cars 3", image: "/images/games/madalin3-min.png", url: "/g/madalincars3"},
+{ name: "Temple Of Boom", image: "/images/games/templeofboom-min.jpg", url: "/g/templeofboom"},
+{ name: "Sky Riders", image: "/images/games/skyriders-min.png", url: "/g/skyriders"},
+{ name: "Crazy Bikes", image: "/images/games/crazybikes-min.png", url: "/g/crazybikes"},
+{ name: "Swingo", image: "/images/games/swingo-min.jpg", url: "/g/swingo"},
+{ name: "Slowroads", image: "/images/games/slowroads-min.png", url: "/g/slowroads"},
+{ name: "Stickman Climb 2", image: "/images/games/stickclimb2-min.jpg", url: "/g/stickmanclimb2"},
+{ name: "Core Ball", image: "/images/games/coreball-min.png", url: "/g/coreball"},
+{ name: "FNAF", image: "/images/games/fnaf-min.jpg", url: "/g/FNAF1"},
+{ name: "Tanuki Sunset", image: "/images/games/tanukisunset-min.png", url: "/g/TanukiSunset"},
+{ name: "Stickman Hook", image: "/images/games/stickmanhook.jpg", url: "/g/stickmanhook"},
+{ name: "Stacktris", image: "/images/games/stacktris-min.png", url: "/g/stacktris"},
+{ name: "Hill Climb Racing", image: "/images/games/hillclimbracing-min.png", url: "/g/hillclimbracing"},
+{ name: "Police Chase", image: "/images/games/policechase-min.png", url: "/g/policechase"},
+
+    // Add more 
+];
+
+
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+const loadingMessage = document.getElementById('loading-message');
+
+let totalGames = 0;
+let currentLoading = 0;
+
+function displayResultsSequentially(results) {
+  searchResults.innerHTML = '';
+  totalGames = results.length;
+  currentLoading = 0;
+  updateLoadingMessage();
+
+  results.forEach((game) => {
+    const gameElement = document.createElement('div');
+    gameElement.classList.add('game');
+
+    const linkElement = document.createElement('a');
+    linkElement.href = game.url;
+
+    const imageElement = document.createElement('img');
+    imageElement.src = game.image;
+    imageElement.alt = game.name;
+    imageElement.loading = 'lazy';
+    imageElement.onload = () => {
+      currentLoading++;
+      updateLoadingMessage();
+    };
+
+    const overlayElement = document.createElement('div');
+    overlayElement.classList.add('overlay');
+    overlayElement.textContent = game.name;
+
+    linkElement.appendChild(imageElement);
+    linkElement.appendChild(overlayElement);
+
+    gameElement.appendChild(linkElement);
+
+    searchResults.appendChild(gameElement);
+  });
+}
+
+function updateLoadingMessage() {
+  loadingMessage.textContent = `Loading ${currentLoading + 1}/${totalGames}`;
+}
+
+function searchGames(query) {
+  const results = games.filter(game =>
+    game.name.toLowerCase().includes(query.toLowerCase())
+  );
+  displayResultsSequentially(results);
+}
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.trim();
+  searchGames(query);
+});
+
+displayResultsSequentially(games);
+  </script>
+
+    
+    </body>
+    </html>
+  <!--particlejs start -->
+</head>
+<body>
+  <div id="particles-js"></div>
+
+
+  <script src="/jsload/particle-load.js"></script>
+
+
+  <script src="/jsload/particlejsscript.js"></script>
+</body>
+</html>
+
+  <!--particlejs end -->
+
+  
+<footer class="footer">
+    <div class="left">
+        <a href="/index.html" class="logo-title">
+            <div class="logo">
+                <img src="/images/pizzalogo.png" alt="Website Logo">
+            </div>
+            <span class="title">The Pizza Edition</span>
+        </a>
+    </div>
+    <div class="middle">
+        <a href="/index.html">Home</a>
+        <a href="/popular">Popular</a>
+        <a href="/all">All</a>
+        <a href="/apps">Apps</a>
+    </div>
+    <div class="right">
+        <a href="/contact">Contact Us</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="https://discord.gg/vdABAxKBgm">Our Discord Server</a>
+        <a href="/extra">Extras</a>
+    </div>
+</footer>
+
+
+  <!--strtscrollup -->
+  <style>
+    #scrollToTopContainer {
+        display: none;
+        position: fixed;
+        bottom: 1.042vw;
+        right: 1.042vw;
+        z-index: 99;
+    }
+
+    #scrollToTop {
+        background-color: #303030;
+        padding: 0.521vw;
+        border-radius: 1.042vw;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        border: 0.104vw solid #303030; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #scrollToTop:hover {
+        background-color: #222222;
+        border-color: #f0d210; 
+    }
+
+    #scrollToTop img {
+        width: 2.292vw; 
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    #scrollToTop:hover img {
+        transform: translateY(-0.26vw); 
+    }
+</style>
+<body>
+    
+    <div id="scrollToTopContainer">
+        <div id="scrollToTop">
+            <img src="/images/2xuparrw.png" alt="Scroll to Top">
+        </div>
+    </div>
+    
+    <script>
+        window.onscroll = function() {scrollFunction()};
+    
+        function scrollFunction() {
+            var scrollToTopContainer = document.getElementById("scrollToTopContainer");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopContainer.style.display = "block";
+            } else {
+                scrollToTopContainer.style.display = "none";
+            }
+        }
+    
+        document.getElementById("scrollToTop").addEventListener("click", function() {
+            scrollToTop();
+        });
+    
+        function scrollToTop() {
+            var scrollStep = -window.scrollY / (350 / 15);
+            var scrollInterval = setInterval(function() {
+                if (window.scrollY != 0) {
+                    window.scrollBy(0, scrollStep);
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, 15);
+        }
+    </script>
+    
+    </body>
+    </html>
+      <!--endtscrollup -->
+               <!-- FPS Counter -->
+               <span id="fps">--</span>
+               <script src="/jsload/fpsCheck.js"></script>
